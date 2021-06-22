@@ -1,0 +1,54 @@
+@model web.Models.Jagenjcek
+
+@{
+    ViewData["Title"] = "Dodaj";
+}
+
+<h1>Dodaj jagenjčka</h1>
+
+<h4>Jagenjček</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="IdJagenjcka" class="control-label"></label>
+                <input asp-for="IdJagenjcka" class="form-control" />
+                <span asp-validation-for="IdJagenjcka" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="kotitevID" class="control-label"></label>
+                <input asp-for="kotitevID" class="form-control" />
+                <span asp-validation-for="kotitevID" class="text-danger"></span>
+            </div>
+
+            <label>Datum kotitve: </label> <p><strong>@TempData["Datum"]</strong></p>
+            <label>Številka mame: </label> <p><strong>@TempData["Mama"]</strong></p>
+            <div class="form-group">
+                <label asp-for="spol" class="control-label"></label>
+                <input asp-for="spol" class="form-control" />
+                <span asp-validation-for="spol" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="stanje" class="control-label"></label>
+                <input asp-for="stanje" class="form-control" />
+                <span asp-validation-for="stanje" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="opombe" class="control-label"></label>
+                <input asp-for="opombe" class="form-control" />
+                <span asp-validation-for="opombe" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Dodaj" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+    
+</div>
+
+<div>
+    <a asp-action="Index">Nazaj na seznam</a>
+</div>
+

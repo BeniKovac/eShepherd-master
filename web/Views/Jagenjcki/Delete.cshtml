@@ -1,0 +1,39 @@
+@model web.Models.Jagenjcek
+
+@{
+    ViewData["Title"] = "Odstrani";
+}
+
+<h1>Odstrani</h1>
+
+<h3>Ali ste prepričani, da želite odstraniti jagenjčka?</h3>
+<div>
+    <h4>Jagenjček</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IdJagenjcka)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdJagenjcka)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.kotitev)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.kotitev.kotitevID)
+        </dd class>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.spol)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.spol)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="skritIdJagenjcka" />
+        <input type="submit" value="Odstrani" class="btn btn-danger" /> |
+        <a asp-action="Index">Nazaj na seznam</a>
+    </form>
+</div>

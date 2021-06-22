@@ -1,0 +1,102 @@
+@model IEnumerable<web.Models.Oven>
+
+@{
+    ViewData["Title"] = "Ovni";
+}
+
+<h1>Ovni</h1>
+
+<p>
+    <a asp-action="Create">Dodaj ovna</a>
+</p>
+<form asp-action="Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+           Najdi ovna po ID: <input type="text" name="SearchString" value="@ViewData["CurrentFilter"]" />
+           
+            <input type="submit" value="Išči" class="btn btn-primary" /> |
+            <a asp-action="Index">Nazaj na seznam</a>
+        </p>
+    </div>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["IDSortParm"]">@Html.DisplayNameFor(model => model.OvenID)</a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["DateSortParm"]">@Html.DisplayNameFor(model => model.DatumRojstva)</a>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.creda)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pasma)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.mamaID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.oceID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SteviloSorojencev)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Stanje)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Opombe)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Poreklo)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+    @if (item.CredaID == "0") {
+        continue;
+    }
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OvenID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DatumRojstva)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.creda.CredeID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Pasma)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.mamaID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.oceID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SteviloSorojencev)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Stanje)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Opombe)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Poreklo)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.OvenID">Uredi</a> |
+                    <a asp-action="Details" asp-route-id="@item.OvenID">Podrobnosti</a> |
+                    <a asp-action="Delete" asp-route-id="@item.OvenID">Odstrani</a>
+                </td>
+            </tr>
+}
+    </tbody>
+</table>

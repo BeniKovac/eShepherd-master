@@ -1,0 +1,113 @@
+@model web.Models.Oven
+
+@{
+    ViewData["Title"] = "Podrobnosti";
+}
+
+<h1>Podrobnosti</h1>
+
+<div>
+    <h4>Oven</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.creda)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.creda.CredeID)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DatumRojstva)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DatumRojstva)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Pasma)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Pasma)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.oceID)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.mamaID)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.SteviloSorojencev)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.SteviloSorojencev)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Stanje)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Stanje)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Opombe)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Opombe)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Poreklo)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Poreklo)
+        </dd>
+        <dd class="col-sm-10">
+            <table class="table">
+                <tr>
+                    <th>Datum kotitve</th>
+                    <th>Ovca</th>
+                    <th>Število mladih</th>
+                </tr>
+                @foreach (var item in Model.vseKotitve)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DatumKotitve)
+                        </td> 
+                        <td>
+                            @Html.DisplayFor(modelItem => item.OvcaID)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SteviloMladih)
+                        </td>
+                    </tr>
+                }
+            </table>
+        </dd>
+        <dd class="col-sm-10">
+            <table class="table">
+                <tr>
+                    <th>Datum gonitve</th>
+                    <th>Ovca, ki se je gonila</th>
+                    <th>Predviden datum kotitve</th>
+                </tr>
+                @foreach (var item in Model.vseGonitve)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DatumGonitve)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.OvcaID)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PredvidenaKotitev)
+                        </td>
+                    </tr>
+                }
+            </table>
+        </dd>
+
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.OvenID">Uredi</a> |
+    <a asp-action="Index">Nazaj na seznam</a>
+</div>

@@ -1,0 +1,66 @@
+@model web.Models.Jagenjcek
+
+@{
+    ViewData["Title"] = "Podrobnosti";
+}
+
+<h1>Podrobnosti</h1>
+
+<div>
+    <h4>Jagenjček</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-4">
+            ID jagenjčka
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdJagenjcka)
+        </dd>
+        <dt class = "col-sm-4">
+            Številka kotitve
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.kotitev.kotitevID)
+        </dd>
+        <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.spol)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.spol)
+        </dd>
+        <dt class = "col-sm-4">
+            Datum rojstva
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.kotitev.DatumKotitve)
+        </dd>
+        <dt class = "col-sm-4">
+            ID mame
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.kotitev.OvcaID)
+        </dd>
+         <dt class = "col-sm-4">
+            ID očeta
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.kotitev.OvenID)
+        </dd>
+         <dt class = "col-sm-4">
+            Stanje
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.stanje)
+        </dd>
+         <dt class = "col-sm-4">
+            Opombe
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.opombe)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.skritIdJagenjcka">Uredi</a> |
+    <a asp-action="Index">Nazaj na seznam</a>
+</div>

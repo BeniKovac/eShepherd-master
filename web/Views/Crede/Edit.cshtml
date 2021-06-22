@@ -1,0 +1,39 @@
+@model web.Models.Creda
+
+@{
+    ViewData["Title"] = "Uredi čredo";
+}
+
+<h1>Uredi čredo</h1>
+
+<h4>Čreda</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="CredeID" />
+            <!--<a href="/">
+            Ročno spreminjanje števila ovc v čredi ne sme bit!
+            <div class="form-group">
+                <label asp-for="SteviloOvc" class="control-label"></label>
+                <input asp-for="SteviloOvc" class="form-control" />
+                <span asp-validation-for="SteviloOvc" class="text-danger"></span>
+            </div>
+            </a> -->
+            <div class="form-group">
+                <label asp-for="Opombe" class="control-label"></label>
+                <input asp-for="Opombe" class="form-control" />
+                <span asp-validation-for="Opombe" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Shrani" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Nazaj na seznam</a>
+</div>
+

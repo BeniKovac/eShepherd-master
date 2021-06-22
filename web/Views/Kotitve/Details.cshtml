@@ -1,0 +1,76 @@
+@model web.Models.Kotitev
+
+@{
+    ViewData["Title"] = "Podrobnosti";
+}
+
+<h1>Podrobnosti</h1>
+
+<div>
+    <h4>Kotitev</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DatumKotitve)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DatumKotitve)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.SteviloMladih)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.SteviloMladih)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Oven)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Oven.OvenID)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Ovca)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Ovca.OvcaID)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.SteviloMrtvih)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.SteviloMrtvih)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Opombe)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Opombe)
+        </dd>
+    </dl>
+     <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.jagenjcki)
+        </dt>
+        <dd class="col-sm-10">
+            <table class="table">
+                <tr>
+                    <th>ID jagenjčka</th>
+                    <th>Spol</th>
+                </tr>
+                @foreach (var item in Model.jagenjcki)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IdJagenjcka)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.spol)
+                        </td>
+                    </tr>
+                }
+            </table>
+        </dd>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.kotitevID">Uredi</a> |
+    <a asp-action="Index">Nazaj na seznam</a>
+</div>

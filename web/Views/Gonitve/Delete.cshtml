@@ -1,0 +1,51 @@
+@model web.Models.Gonitev
+
+@{
+    ViewData["Title"] = "Odstrani";
+}
+
+<h1>Odstrani</h1>
+
+<h3>Ali ste prepričani, da želite odstraniti gonitev?</h3>
+<div>
+    <h4>Gonitev</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DatumGonitve)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DatumGonitve)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ovca)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ovca.OvcaID)
+        </dd class>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ovca)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.oven.OvenID)
+        </dd class>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PredvidenaKotitev)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PredvidenaKotitev)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Opombe)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Opombe)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="GonitevID" />
+        <input type="submit" value="Odstrani" class="btn btn-danger" /> |
+        <a asp-action="Index">Nazaj na seznam</a>
+    </form>
+</div>

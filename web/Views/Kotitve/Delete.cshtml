@@ -1,0 +1,57 @@
+@model web.Models.Kotitev
+
+@{
+    ViewData["Title"] = "Odstrani kotitev";
+}
+
+<h1>Odstrani</h1>
+
+<h3>Ali ste prepričani, da želite odstraniti kotitev?</h3>
+<div>
+    <h4>Kotitev</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DatumKotitve)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DatumKotitve)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.SteviloMladih)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.SteviloMladih)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Oven)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Oven.OvenID)
+        </dd class>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Ovca)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Ovca.OvcaID)
+        </dd class>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.SteviloMrtvih)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.SteviloMrtvih)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Opombe)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Opombe)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="kotitevID" />
+        <input type="submit" value="Odstrani" class="btn btn-danger" /> |
+        <a asp-action="Index">Nazaj na seznam</a>
+    </form>
+</div>

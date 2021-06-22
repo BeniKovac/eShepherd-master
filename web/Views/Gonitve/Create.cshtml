@@ -1,0 +1,43 @@
+@model web.Models.Gonitev
+
+@{
+    ViewData["Title"] = "Dodaj gonitev";
+}
+
+<h1>Dodaj gonitev</h1>
+
+<h4>Gonitev</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="DatumGonitve" class="control-label"></label>
+                <input asp-for="DatumGonitve" class="form-control" />
+                <span asp-validation-for="DatumGonitve" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OvcaID" class="control-label"></label>
+                <select asp-for="OvcaID" class ="form-control" asp-items="ViewBag.OvcaID"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="OvenID" class="control-label"></label>
+                <select asp-for="OvenID" class ="form-control" asp-items="ViewBag.OvenID"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Opombe" class="control-label"></label>
+                <input asp-for="Opombe" class="form-control" />
+                <span asp-validation-for="Opombe" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Dodaj" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Nazaj na seznam</a>
+</div>
+

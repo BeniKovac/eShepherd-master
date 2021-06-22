@@ -1,0 +1,81 @@
+@model web.Models.Ovca
+
+@{
+    ViewData["Title"] = "Odstrani ovco";
+}
+
+<h1>Odstrani ovco</h1>
+
+<h3>Ali ste prepričani, da želite izbrisati ovco? S tem izgubite vse podatke.</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.creda)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.creda.CredeID)
+        </dd class>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DatumRojstva)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DatumRojstva)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Pasma)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Pasma)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.mama)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.mama.OvcaID)
+        </dd class>
+         <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.oce)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.oce.OvenID)
+        </dd class>
+ 
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.SteviloSorojencev)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.SteviloSorojencev)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Stanje)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Stanje)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Opombe)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Opombe)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.SteviloKotitev)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.SteviloKotitev)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PovprecjeJagenjckov)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PovprecjeJagenjckov)
+        </dd>
+    </dl>
+    
+    <form asp-action="MoveTo0">
+        <input type="hidden" asp-for="OvcaID" />
+        <input type="submit" value="Odstrani" class="btn btn-danger" /> |
+        <a asp-action="Index">Nazaj na seznam</a>
+    </form>
+</div>

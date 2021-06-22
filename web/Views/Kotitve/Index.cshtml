@@ -1,0 +1,117 @@
+@model web.Models.eShepherdViewModels.KotitveIndexData
+
+@{
+    ViewData["Title"] = "Kotitve";
+}
+
+<h1>Kotitve</h1>
+
+<p>
+    <a asp-action="Create">Dodaj kotitev</a>
+</p>
+<form asp-action="Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+           Išči kotitve ovce: <input type="text" name="SearchString" value="@ViewData["CurrentFilter"]" />
+           
+            <input type="submit" value="Išči" class="btn btn-primary" /> |
+            <a asp-action="Index">Nazaj na seznam</a>
+        </p>
+    </div>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["DateSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Datum kotitve</a>            
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["IDSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">ID ovce</a>            
+            </th>
+            <th>
+                Število mladih
+            </th>
+            <th>
+                ID ovna
+            </th>
+            <th>
+                Število mrtvorojenih
+            </th>
+            <th>
+               Opombe
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Kotitve) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DatumKotitve)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OvcaID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SteviloMladih)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OvenID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SteviloMrtvih)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Opombe)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.kotitevID">Uredi</a> |
+                <a asp-action="Details" asp-route-id="@item.kotitevID">Podrobnosti</a> |
+                <a asp-action="Delete" asp-route-id="@item.kotitevID">Odstrani</a> | 
+                <a asp-action="Index" asp-route-kotitevID="@item.kotitevID"
+                   asp-route-pageNumber="@(Model.Kotitve.PageIndex)">Prikaži jagenjčke</a> | 
+                <a asp-controller="Jagenjcki" asp-action="Create" asp-route-ID="@item.kotitevID">Dodaj jagenjčka</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+@{
+    var prevDisabled = !Model.Kotitve.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.Kotitve.HasNextPage ? "disabled" : "";
+}
+
+<a asp-action="Index"
+   asp-route-sortOrder="@ViewData["CurrentSort"]"
+   asp-route-pageNumber="@(Model.Kotitve.PageIndex - 1)"
+   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+   class="btn btn-default @prevDisabled">
+    Prejšnja stran
+</a>
+<a asp-action="Index"
+   asp-route-sortOrder="@ViewData["CurrentSort"]"
+   asp-route-pageNumber="@(Model.Kotitve.PageIndex + 1)"
+   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+   class="btn btn-default @nextDisabled">
+    Naslednja stran
+</a>
+@if(Model.Jagenjcki != null){
+<table class="table">
+                <tr>
+                    <th>ID jagenjčka</th>
+                    <th>Spol</th>
+                </tr>
+                @foreach (var item in Model.Jagenjcki)
+                {
+
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IdJagenjcka)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.spol)
+                        </td>
+                    </tr>
+                }
+            </table>
+}
